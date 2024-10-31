@@ -1,4 +1,4 @@
-## Mini-Project #7: Abstract games
+## Mini-Project #7: Abstract Games
 
 ### Authors
 
