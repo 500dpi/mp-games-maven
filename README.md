@@ -1,10 +1,10 @@
-## Mini-Project #7: Abstract Games
+## Mini-Project #7: Abstract games
 
 ### Authors
 
-- Sara Jaljaa
-- Your name here
-- Samuel A. Rebelsky (Starter code)
+- *Sara Jaljaa*
+- *Your name here*
+- *Samuel A. Rebelsky (Starter code)*
 
 ---
 
