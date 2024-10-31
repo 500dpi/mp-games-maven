@@ -16,7 +16,11 @@
 
 ### Acknowledgements
 
-*Add any acknowledgements*
+#### /util
+- [MatrixV0](https://github.com/500dpi/mp-matrices-maven)
+- [Matrix & ArraySizeException](https://github.com/Grinnell-CSC207/mp-matrices-maven)
+
+#### other
 
 ---
 
