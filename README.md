@@ -1,19 +1,26 @@
-# Abstract games
+## Mini-Project #7: Abstract games
 
-A mini-project for Grinnell's CSC-207.
+### Authors
 
-Authors:
+- Sara Jaljaa
+- Your name here
+- Samuel A. Rebelsky (Starter code)
 
-* Your Name Here
-* Your Name Here
-* Samuel A. Rebelsky (Starter code)
+---
 
-Instructions:
+### Instructions
 
-* **Please add instructions for running the game**
+*Add instructions*
 
-Acknowledgements:
+---
 
-Source:
+### Acknowledgements
 
-This code may be found at <URL>. It is based on code found at <https://github.com/Grinnell-CSC207/mp-games-maven>.
+*Add any acknowledgements*
+
+---
+
+### Source
+
+- This edited project: [500dpi/mp-games-maven](https://github.com/500dpi/mp-games-maven)
+- Original: [Grinnell-CSC207/mp-games-maven](https://github.com/Grinnell-CSC207/mp-games-maven)
