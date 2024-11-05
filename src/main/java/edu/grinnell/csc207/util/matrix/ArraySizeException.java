@@ -1,4 +1,4 @@
-package edu.grinnell.csc207.util;
+package edu.grinnell.csc207.util.matrix;
 
 /**
  * Thrown to indicate that the size of an array is incorrect (e.g.,

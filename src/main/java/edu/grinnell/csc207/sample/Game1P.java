@@ -2,9 +2,8 @@ package edu.grinnell.csc207.sample;
 
 import edu.grinnell.csc207.util.ArrayUtils;
 import edu.grinnell.csc207.util.IOUtils;
-import edu.grinnell.csc207.util.Matrix;
-import edu.grinnell.csc207.util.MatrixV0;
-
+import edu.grinnell.csc207.util.matrix.Matrix;
+import edu.grinnell.csc207.util.matrix.MatrixV0;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
