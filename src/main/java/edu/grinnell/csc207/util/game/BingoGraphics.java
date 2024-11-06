@@ -1,5 +1,7 @@
 package edu.grinnell.csc207.util.game;
 
+import java.io.PrintWriter;
+
 public class BingoGraphics {
 
   // +-----------+---------------------------------------------------
@@ -34,7 +36,8 @@ public class BingoGraphics {
    *    The bingo card.
    */
   public static void printCard(BingoCard card) {
-    cardToString(card);
+    PrintWriter pen = new PrintWriter(System.out, true);
+    pen.println(cardToString(card));
   } // printCard(BingoCard)
 
   /**
