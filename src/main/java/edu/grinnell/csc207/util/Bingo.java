@@ -6,7 +6,7 @@ import edu.grinnell.csc207.util.game.BingoCard;
  * A game of bingo.
  */
 public class Bingo {
-  
+
   /**
    * Run a bingo game.
    *

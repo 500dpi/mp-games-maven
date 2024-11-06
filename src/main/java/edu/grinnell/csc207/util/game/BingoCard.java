@@ -6,7 +6,19 @@ import edu.grinnell.csc207.util.matrix.MatrixV0;
 import java.util.Random;
 import java.io.PrintWriter;
 
+/**
+ * The bingo card and associated rules.
+ *
+ * @author Sara Jaljaa
+ */
 public class BingoCard {
+
+  // Constants
+
+  /**
+   * The default size of the bingo card (4x4).
+   */
+  private static final Integer DEF = 4;
 
   // +--------+------------------------------------------------------
   // | Fields |
@@ -15,38 +27,53 @@ public class BingoCard {
   /**
    * The bingo card.
    */
-  protected Matrix<Integer> card;
+  private Matrix<Integer> card;
 
   /**
    * The dimensions of the square bingo card.
    */
-  protected Integer dimensions;
+  private Integer dimensions;
 
   /**
    * To generate randomized bingo card values.
    */
-  protected Random randomCard;
+  private Random randomCard;
 
   // +-------------+-------------------------------------------------
   // | Constructor |
   // +-------------+
 
+  /**
+   * Construct a bingo card that is dimen x dimen.
+   *
+   * @param dimen
+   *    The length of one side of the square.
+   */
   public BingoCard(Integer dimen) {
     this.dimensions = dimen;
     this.card = new MatrixV0<Integer>(dimen, dimen, 0);
-
     // Free space
-    this.card.set((dimen / 2) - 1, (dimen / 2) - 1, 0);
+    if ((dimen % 2) == 1) {
+      this.card.set((dimen / 2) - 1, (dimen / 2) - 1, 0);
+    } // if
     // + Something with a random seed idk
   } // BingoCard(int)
 
-  public BingoCard(Matrix<Integer> card) {
-    this.card = card;
-    if (card.height() == card.width()) {
-      this.dimensions = card.height();
-    } // if
+  /**
+   * Construct a bingo card from a Matrix.
+   *
+   * @param mat
+   *    The matrix array.
+   */
+  public BingoCard(Matrix<Integer> mat) {
+    this.card = mat;
+    if (mat.height() == mat.width()) {
+      this.dimensions = mat.height();
+    } else {
+      this.dimensions = DEF;
+    } // elif
   } // BingoCard(Matrix<Integer>)
-  
+
   // +---------+-----------------------------------------------------
   // | Methods |
   // +---------+
@@ -79,10 +106,10 @@ public class BingoCard {
    * If the value matches a cell on the bingo card, that cell is
    * crossed out.
    *
-   * @param card
-   *    The value on the bingo card's grid.
    * @param val
    *    The value to compare to.
+   * @return
+   *    True or false if a matching value is found.
    */
   public boolean match(Integer val) {
     // Look through all the grid elements, if there is a match set

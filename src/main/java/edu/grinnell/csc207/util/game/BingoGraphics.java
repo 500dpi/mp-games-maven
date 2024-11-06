@@ -2,6 +2,9 @@ package edu.grinnell.csc207.util.game;
 
 import java.io.PrintWriter;
 
+/**
+ * Bingo card printing helpers.
+ */
 public class BingoGraphics {
 
   // +-----------+---------------------------------------------------
@@ -9,28 +12,29 @@ public class BingoGraphics {
   // +-----------+
 
   /**
-   * The string that marks a matching bingo cell.
+   * The string that marks a matching bingo value.
    */
   private static final String ELIM = "XX";
-  
+
   // +---------+-----------------------------------------------------
   // | Methods |
   // +---------+
 
-  // Bingo Card:
-  //
-  // +----+----+----+----+
-  // | XX | XX | XX | XX |
-  // +----+----+----+----+
-  // | XX | XX | XX | XX |
-  // +----+----+----+----+
-  // | XX | XX | XX | XX |
-  // +----+----+----+----+
-  // | XX | XX | XX | XX |
-  // +----+----+----+----+
-
   /**
-   * Prints the bingo card as a string to display.
+   * Prints the bingo card as a string with the
+   * form:
+   *
+   * +----+----+----+----+
+   * | XX | XX | XX | XX |
+   * +----+----+----+----+
+   * | XX | XX | XX | XX |
+   * +----+----+----+----+
+   * | XX | XX | XX | XX |
+   * +----+----+----+----+
+   * | XX | XX | XX | XX |
+   * +----+----+----+----+
+   *
+   * Where XX is replaced with values.
    *
    * @param card
    *    The bingo card.
@@ -52,8 +56,8 @@ public class BingoGraphics {
     String line = "+----+----+----+----+\n";
     String current;
 
-    for (int rows = 0; rows < card.dimensions; rows++) {
-      for (int cols = 0; cols < card.dimensions; cols++) {
+    for (int rows = 0; rows < card.dimen(); rows++) {
+      for (int cols = 0; cols < card.dimen(); cols++) {
         current = (card.get(rows, cols).toString());
 
         // Set bingo cells to the marked-off string
@@ -67,7 +71,7 @@ public class BingoGraphics {
         } // if
 
         // Print dividers
-        if (cols == card.dimensions - 1) {
+        if (cols == card.dimen() - 1) {
           line = line + "| " + current + " |";
         } else {
           line = line +  "| " + current + " ";

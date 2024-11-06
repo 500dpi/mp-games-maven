@@ -121,7 +121,7 @@ public class IOUtils {
           done = true;
         } else {
           pen.printf("I'm sorry, but %d is outside the range %d to %d\n",
-              result, lower, upper-1);
+              result, lower, upper - 1);
         } // if/else
       } catch (NumberFormatException e) {
         pen.printf("I'm sorry, but I can't interpret '%s'\n", response);

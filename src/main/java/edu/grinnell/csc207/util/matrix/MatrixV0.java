@@ -6,8 +6,6 @@ package edu.grinnell.csc207.util.matrix;
  * @author Sara Jaljaa
  * @author Samuel A. Rebelsky
  *
- * @course CSC-207-01
- *
  * @param <T> The type of values stored in the matrix.
  */
 public class MatrixV0<T> implements Matrix<T> {

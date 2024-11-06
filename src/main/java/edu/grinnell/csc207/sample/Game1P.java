@@ -9,8 +9,6 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -201,7 +199,8 @@ public class Game1P {
    */
   public static void main(String[] args) throws IOException {
     PrintWriter pen = new PrintWriter(System.out, true);
-    BufferedReader eyes = new BufferedReader(new InputStreamReader(System.in));
+    BufferedReader eyes =
+        new BufferedReader(new InputStreamReader(System.in));
 
     int rrRemaining = 2;
     int rcRemaining = 2;
