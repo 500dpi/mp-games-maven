@@ -24,9 +24,10 @@ public class ArrayUtils {
    *
    * @return true if the array contains an equal value and false otherwise.
    */
-  public static <T> boolean arrayContains(T[] vals, T val) {
-    for (T tmp : vals) {
-      if (tmp.equals(val)) {
+  public static <T> boolean arrayContains(int[] vals, int val) {
+    for (int tmp : vals) {
+      if (tmp == val) {
+        tmp = 0;
         return true;
       } // if
     } // for
