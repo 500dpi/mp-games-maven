@@ -18,11 +18,6 @@ public class BingoPrint {
    */
   private static final String ELIM = "XX";
 
-  // /**
-  //  * A divider for formatting the bingo card.
-  //  */
-  // private String line;
-
   // +---------+-----------------------------------------------------
   // | Methods |
   // +---------+
@@ -40,20 +35,7 @@ public class BingoPrint {
   } // line(int)
 
   /**
-   * Prints the bingo card as a string with the
-   * form:
-   *
-   * +----+----+----+----+
-   * | XX | XX | XX | XX |
-   * +----+----+----+----+
-   * | XX | XX | XX | XX |
-   * +----+----+----+----+
-   * | XX | XX | XX | XX |
-   * +----+----+----+----+
-   * | XX | XX | XX | XX |
-   * +----+----+----+----+
-   *
-   * Where XX is replaced with integer values.
+   * Prints the bingo card.
    *
    * @param card
    *    The bingo card.
