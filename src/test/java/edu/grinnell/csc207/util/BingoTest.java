@@ -4,13 +4,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import edu.grinnell.csc207.util.game.BingoCard;
-import edu.grinnell.csc207.util.game.BingoGraphics;
+import edu.grinnell.csc207.util.logic.BingoCard;
+import edu.grinnell.csc207.util.logic.BingoPrint;
 
 import edu.grinnell.csc207.util.matrix.ArraySizeException;
 import edu.grinnell.csc207.util.matrix.Matrix;
 import edu.grinnell.csc207.util.matrix.MatrixV0;
 
+/**
+ * Tests for all bingo-related functions.
+ *
+ * @author Sara Jaljaa
+ */
 public class BingoTest {
 
   // +---------+-----------------------------------------------------
@@ -34,7 +39,7 @@ public class BingoTest {
   // +-----------------------+
 
   /**
-   * Simple print/to string test for cards filled with
+   * Simple print/image test for cards filled with
    * a single value.
    */
   @Test
@@ -53,7 +58,7 @@ public class BingoTest {
         "+----+----+----+----+\n" +
         "| XX | XX | XX | XX |\n" +
         "+----+----+----+----+\n",
-        BingoGraphics.cardToString(bingo),
+        BingoPrint.cardToString(bingo),
         "Printed card correctly.");
 
     Matrix<Integer> card2 = example(5);
@@ -70,7 +75,7 @@ public class BingoTest {
         "+----+----+----+----+\n" +
         "| 05 | 05 | 05 | 05 |\n" +
         "+----+----+----+----+\n",
-        BingoGraphics.cardToString(bingo2),
+        BingoPrint.cardToString(bingo2),
         "Printed card 2 correctly.");
 
     Matrix<Integer> card3 = example(73);
@@ -87,12 +92,12 @@ public class BingoTest {
         "+----+----+----+----+\n" +
         "| 73 | 73 | 73 | 73 |\n" +
         "+----+----+----+----+\n",
-        BingoGraphics.cardToString(bingo3),
+        BingoPrint.cardToString(bingo3),
         "Printed card 3 correctly.");
   } // simpleCardTest()
 
   /**
-   * Tests print/to string for bingo cards with different
+   * Tests print/images of bingo cards with different
    * cell values (no bingo values).
    */
   @Test
@@ -105,7 +110,7 @@ public class BingoTest {
 
     Matrix<Integer> card = new MatrixV0<Integer>(0, 4);
 
-    // Insert columns to Matrix to create card
+    // Inserting values by column
     try {
     card.insertCol(0, arr4);
     card.insertCol(0, arr1);
@@ -127,12 +132,12 @@ public class BingoTest {
         "+----+----+----+----+\n" +
         "| 04 | 90 | 05 | 44 |\n" +
         "+----+----+----+----+\n",
-        BingoGraphics.cardToString(bingo),
+        BingoPrint.cardToString(bingo),
         "Successful 'random' card.");
   } // normalCardTest()
 
   /**
-   * Tests for print/to string with a bingo card that has single
+   * Tests for bingo card images that have single
    * digits, double digits, and marked bingo values.
    */
   @Test
@@ -145,8 +150,7 @@ public class BingoTest {
   // +-------------+
 
   /**
-   * Tests that a bingo value is correctly matched and
-   * then marked off.
+   * Tests that a bingo value is correctly matched and marked off.
    */
   @Test
   public void matchTest() {
@@ -277,9 +281,9 @@ public class BingoTest {
         "No bingo found in bingo1.");
 
     assertEquals(
-      false,
-      bingo2.horizWin(),
-      "No bingo found in bingo2.");
+        false,
+        bingo2.horizWin(),
+        "No bingo found in bingo2.");
   } // horizontalEdgeTest()
 
   // +----------------------+----------------------------------------
@@ -347,9 +351,9 @@ public class BingoTest {
         "No bingo found in bingo1.");
 
     assertEquals(
-      false,
-      bingo2.vertWin(),
-      "No bingo found in bingo2.");
+        false,
+        bingo2.vertWin(),
+        "No bingo found in bingo2.");
   } // verticalEdgeTest()
 
   // +----------------------+----------------------------------------
@@ -404,7 +408,7 @@ public class BingoTest {
     /* 89 89 XX 89 */
     /* 89 89 89 XX */
 
-    for (int i = 0; i < bingo1.dimen(); i++) {
+    for (int i = 0; i < bingo1.length(); i++) {
       ex8.set(i, i, 0);
     } // for
 
@@ -416,7 +420,7 @@ public class BingoTest {
     /* 56 XX 56 56 */
     /* XX 56 56 56 */
 
-    for (int i = bingo2.dimen() - 1; i >= 0; i--) {
+    for (int i = bingo2.length() - 1; i >= 0; i--) {
       ex9.set(i, i, 0);
     } // for
 
