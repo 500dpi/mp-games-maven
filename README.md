@@ -8,19 +8,22 @@
 
 ---
 
-### Instructions
+### Instructions for Bingo
 
-*Add instructions*
+*...*
 
 ---
 
 ### Acknowledgements
 
-#### /util
+#### Matrix
 - [MatrixV0](https://github.com/500dpi/mp-matrices-maven)
 - [Matrix & ArraySizeException](https://github.com/Grinnell-CSC207/mp-matrices-maven)
 
 #### other
+- [StringBuilder class](https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html)
+- [Integer class](https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html)
+- [Random class](https://docs.oracle.com/javase/8/docs/api/java/util/Random.html)
 
 ---
 
