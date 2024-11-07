@@ -5,35 +5,28 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 import edu.grinnell.csc207.util.logic.BingoCard;
-import edu.grinnell.csc207.util.matrix.Matrix;
+import edu.grinnell.csc207.util.logic.BingoNumbers;
+import edu.grinnell.csc207.util.logic.BingoPrint;
 
 /**
- * A sample one-player game (is that a puzzle?). Intended as a potential
- * use of our Matrix interface.
- *
+ * A sample one-player Bingo game.
+ * The player generates numbers and attempts to match them to the Bingo card.
+ * If they match 4 in a row, either horizontally, vertically, or diagonally, they win.
+ * 
  * @author Samuel A. Rebelsky
  */
 public class Game1P {
+
   // +-----------+---------------------------------------------------
   // | Constants |
   // +-----------+
-
-  /**
-   * The default width.
-   */
-  static final int DEFAULT_WIDTH = 10;
-
-  /**
-   * The default number of rows.
-   */
-  static final int DEFAULT_HEIGHT = 8;
 
   // +----------------+----------------------------------------------
   // | Helper methods |
   // +----------------+
 
   /**
-   * Print the insturctions.
+   * Print the instructions for the game.
    *
    * @param pen
    *  The printwriter used to print the instructions.
@@ -51,20 +44,6 @@ public class Game1P {
                 """);
   } // printInstructions(PrintWriter)
 
-  /**
-   * Print the results of the game.
-   *
-   * @param pen
-   *   What to use for printing.
-   * @param board
-   *   The game board at the end.
-   */
-  static void printState(PrintWriter pen, Matrix<String> board) {
-
-  } 
-
-
-
   // +------+--------------------------------------------------------
   // | Main |
   // +------+
@@ -79,43 +58,57 @@ public class Game1P {
     PrintWriter pen = new PrintWriter(System.out, true);
     Scanner eyes = new Scanner(System.in);
 
-    //creates a new 4x4 bingo card
+    // Initialize a new 4x4 bingo card
     BingoCard card = new BingoCard(4);
-    String userInput;
-    // Get started
-    printInstructions(pen);
-    //while loop ends when some kind of match is detected
-    while(!card.diagWin() && !card.horizWin() && !card.vertWin()) {
+    BingoNumbers random = new BingoNumbers();
 
-      //detect when the user clicks enter to play or escape to end
-      pen.println("Click enter to generate a number, or 'x' to end the game");
+    // Print the initial game instructions and bingo card
+    pen.println("Here is your bingo card!");
+    BingoPrint.printCard(card);
+    printInstructions(pen);
+
+    String userInput;
+
+    // Game loop continues until a win condition is met or the user quits
+    while (!card.diagWin() && !card.horizWin() && !card.vertWin()) {
+
+      // Prompt the user to proceed or quit
+      pen.println("Press Enter to generate a number, or type 'x' to quit.");
       userInput = eyes.nextLine();
-      if(userInput.equals("x")) {
+      if (userInput.equalsIgnoreCase("x")) {
         pen.println("The game has ended!");
         break;
       }
 
-      /*print the board and random number generator here here
-        ex. printstate(pen, card);
-    */
+      // Generate a random number and display it
+      random.findRandom();
+      Integer rand = random.getRandom();
+      pen.println("The next number is ---> " + rand);
 
-    /*generate a random value between some range
+      // Check for a match on the card
+      boolean isMatch = card.match(rand);
 
-    ex. int randNumber = random(1-25);
-    */
+      // Print the updated bingo card to show any changes
+      BingoPrint.printCard(card);
 
-    //card.match(randomNumber); <-- assumes that some visual display of a match will be done in the Bingo or BingoGraphics class
-
-    //could also add a secondary cue of a match: pen.println("You matched!")/pen.println("No matches")
-
-    } // while
-    if(card.diagWin()) {
-      pen.println("You won through a diagonal bingo!");
-    } else if (card.vertWin()) {
-      pen.println("You won through a vertical bingo!");
-    } else {
-      pen.println("You won through a horizontal win!");
+      // Notify the user if a match was found
+      if (isMatch) {
+        pen.println("You matched a number!");
+      } else {
+        pen.println("No match found.");
+      }
     }
+
+    // Announce the type of win if achieved
+    if (card.diagWin()) {
+      pen.println("Congratulations! You won with a diagonal bingo!");
+    } else if (card.vertWin()) {
+      pen.println("Congratulations! You won with a vertical bingo!");
+    } else if (card.horizWin()) {
+      pen.println("Congratulations! You won with a horizontal bingo!");
+    }
+
+    // Close resources
     pen.close();
     eyes.close();
   } // main(String[])
