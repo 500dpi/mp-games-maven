@@ -1,55 +1,27 @@
-package edu.grinnell.csc207.sample;
+package edu.grinnell.csc207.main;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
-
+import edu.grinnell.csc207.util.BingoPrint;
 import edu.grinnell.csc207.util.logic.BingoCard;
 import edu.grinnell.csc207.util.logic.BingoNumbers;
-import edu.grinnell.csc207.util.logic.BingoPrint;
 
 /**
  * A sample one-player Bingo game.
  * The player generates numbers and attempts to match them to the Bingo card.
  * If they match 4 in a row, either horizontally, vertically, or diagonally, they win.
- * 
+ *
  * @author Samuel A. Rebelsky
  */
-public class Game1P {
-
-  // +-----------+---------------------------------------------------
-  // | Constants |
-  // +-----------+
-
-  // +----------------+----------------------------------------------
-  // | Helper methods |
-  // +----------------+
-
-  /**
-   * Print the instructions for the game.
-   *
-   * @param pen
-   *  The printwriter used to print the instructions.
-   */
-  public static void printInstructions(PrintWriter pen) {
-    pen.println("""
-                Welcome to Bingo!
-
-                The game board is a 4x4 bingo card filled with random numbers.
-
-                The goal is to mark down the random numbers given with the numbers on your bingo card.
-
-                If you match 4 in a row, you win!
-
-                """);
-  } // printInstructions(PrintWriter)
+public class Bingo {
 
   // +------+--------------------------------------------------------
   // | Main |
   // +------+
 
   /**
-   * Run the game.
+   * Run a game of bingo.
    *
    * @param args
    *   Command-line arguments.
@@ -65,9 +37,10 @@ public class Game1P {
     // Print the initial game instructions and bingo card
     pen.println("Here is your bingo card!");
     BingoPrint.printCard(card);
-    printInstructions(pen);
+    BingoPrint.printInstructions(pen);
 
     String userInput;
+    Integer rand;
 
     // Game loop continues until a win condition is met or the user quits
     while (!card.diagWin() && !card.horizWin() && !card.vertWin()) {
@@ -78,11 +51,10 @@ public class Game1P {
       if (userInput.equalsIgnoreCase("x")) {
         pen.println("The game has ended!");
         break;
-      }
+      } // if
 
       // Generate a random number and display it
-      random.findRandom();
-      Integer rand = random.getRandom();
+      rand = random.getRandom();
       pen.println("The next number is ---> " + rand);
 
       // Check for a match on the card
@@ -96,8 +68,8 @@ public class Game1P {
         pen.println("You matched a number!");
       } else {
         pen.println("No match found.");
-      }
-    }
+      } // elif
+    } // while
 
     // Announce the type of win if achieved
     if (card.diagWin()) {
@@ -106,10 +78,10 @@ public class Game1P {
       pen.println("Congratulations! You won with a vertical bingo!");
     } else if (card.horizWin()) {
       pen.println("Congratulations! You won with a horizontal bingo!");
-    }
+    } // elif
 
     // Close resources
     pen.close();
     eyes.close();
   } // main(String[])
-} // class Game1P
+} // class Bingo

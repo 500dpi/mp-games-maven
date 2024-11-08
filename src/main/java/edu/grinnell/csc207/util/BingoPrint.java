@@ -1,11 +1,13 @@
-package edu.grinnell.csc207.util.logic;
+package edu.grinnell.csc207.util;
 
 import java.io.PrintWriter;
+import edu.grinnell.csc207.util.logic.BingoCard;
 
 /**
  * Bingo card printing helpers.
  *
  * @author Sara Jaljaa
+ * @author --
  */
 public class BingoPrint {
 
@@ -21,6 +23,25 @@ public class BingoPrint {
   // +---------+-----------------------------------------------------
   // | Methods |
   // +---------+
+
+  /**
+   * Print the instructions for the game.
+   *
+   * @param pen
+   *  The printwriter used to print the instructions.
+   */
+  public static void printInstructions(PrintWriter pen) {
+    pen.println("""
+        Welcome to Bingo!
+
+        The game board is a 4x4 bingo card filled with random numbers.
+
+        The goal is to mark down the random numbers given with the numbers on your bingo card.
+
+        If you match 4 in a row, you win!
+
+        """);
+  } // printInstructions(PrintWriter)
 
   /**
    * The horizontal divider between each row.
@@ -58,7 +79,7 @@ public class BingoPrint {
     String current;
     String div = "";
 
-    // Go through each row of the grid L->R, find the
+    // Go through each row of the grid L-->R, find the
     // value at that point, format it, then concatenate it
     for (int rows = 0; rows < card.length(); rows++) {
       for (int cols = 0; cols < card.length(); cols++) {

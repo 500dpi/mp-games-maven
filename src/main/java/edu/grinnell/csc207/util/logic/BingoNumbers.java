@@ -2,24 +2,64 @@ package edu.grinnell.csc207.util.logic;
 
 import java.util.Random;
 
+import edu.grinnell.csc207.util.matrix.Matrix;
 
-public class BingoNumbers { 
+/**
+ * Random number generation for bingo.
+ */
+public final class BingoNumbers {
 
-    int min = 1;
-    int max = 48;
+  // +-----------+---------------------------------------------------
+  // | Constants |
+  // +-----------+
 
-    int randomValue;
+  private static final int MIN = 1;
 
-    public BingoNumbers() {
-        this.randomValue = 0;
-    }
+  private static final int MAX = 48;
 
-    public void findRandom() {
-        Random rand = new Random();
-        this.randomValue = rand.nextInt(max - min + 1) + min;
-    }
+  // +--------+------------------------------------------------------
+  // | Fields |
+  // +--------+
 
-    public int getRandom() {
-        return this.randomValue;
-    }
-}
+  private Random callRng;
+
+  /**
+   * To hold randomized grid values in the bingo card.
+   */
+  private Random gridRng;
+
+  // +--------------+-------------------------------------------------
+  // | Constructors |
+  // +--------------+
+
+  public BingoNumbers() {
+    this.callRng = new Random();
+    this.gridRng = new Random();
+  } // BingoNumbers()
+
+  // +---------+-----------------------------------------------------
+  // | Methods |
+  // +---------+
+
+  public int getRandom() {
+    return this.callRng.nextInt(MAX - MIN + 1) + MIN;
+  } // getRandom()
+
+  /**
+   * Randomizes a column of the bingo grid.
+   *
+   * @param card
+   *    The matrix that stores the bingo card values.
+   * @return
+   *    A randomized array of Integers.
+   */
+  public Integer[] randomCard(Matrix<Integer> card) {
+    Integer[] grid = new Integer[card.height()];
+
+    for (int i = 0; i < grid.length; i++) {
+      grid[i] = (Integer) this.gridRng.nextInt(
+          3 * (grid.length * grid.length)) + 1;
+    } // for
+    return grid;
+  } // randomize(Integer[])
+} // class BingoNumbers

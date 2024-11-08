@@ -4,8 +4,6 @@ import edu.grinnell.csc207.util.matrix.ArraySizeException;
 import edu.grinnell.csc207.util.matrix.Matrix;
 import edu.grinnell.csc207.util.matrix.MatrixV0;
 
-import java.util.Random;
-
 /**
  * The bingo card and associated rules.
  *
@@ -13,7 +11,9 @@ import java.util.Random;
  */
 public class BingoCard {
 
-  // Constants
+  // +-----------+---------------------------------------------------
+  // | Constants |
+  // +-----------+
 
   /**
    * The default size of the bingo card (4x4).
@@ -34,11 +34,6 @@ public class BingoCard {
    */
   private Integer length;
 
-  /**
-   * The random number for the card's values.
-   */
-  private Random rnd;
-
   // +--------------+-------------------------------------------------
   // | Constructors |
   // +--------------+
@@ -53,22 +48,20 @@ public class BingoCard {
   public BingoCard(Integer length) {
     this.length = length;
     this.card = new MatrixV0<Integer>(length, length, 0);
-    this.rnd = new Random();
-    Integer[] vals = new Integer[length];
+    BingoNumbers gridGen = new BingoNumbers();
 
     try {
       for (int i = 0; i < length; i++) {
-        this.card.insertCol((i % 2), this.randomize(vals));
+        this.card.insertCol((i % 2), gridGen.randomCard(this.card));
       } // for
     } catch (ArraySizeException e) {
-      return; // fix later
+      return;
     } // try/catch
 
     // Free space if the card side lengths are odd
     if ((length % 2) == 1) {
       this.card.set((length / 2), (length / 2), 0);
     } // if
-    // + Something with a random seed idk
   } // BingoCard(int)
 
   /**
@@ -81,29 +74,16 @@ public class BingoCard {
     this.card = card;
     if (card.height() == card.width()) {
       this.length = card.height();
+    } else if (card.height() < card.width()) {
+      this.length = card.height();
     } else {
-      this.length = DEF;
+      this.length = card.width();
     } // elif
   } // BingoCard(Matrix<Integer>)
 
   // +---------+-----------------------------------------------------
   // | Methods |
   // +---------+
-
-  /**
-   * Randomizes a column of the bingo grid.
-   *
-   * @param vals
-   *    A column array of the bingo card.
-   * @return
-   *    A randomized array of Integers.
-   */
-  public Integer[] randomize(Integer[] vals) {
-    for (int i = 0; i < vals.length; i++) {
-      vals[i] = this.rnd.nextInt(3 * (this.length * this.length)) + 1;
-    } // for
-    return vals;
-  } // randomize(Integer[])
 
   /**
    * Retrieve the value of a bingo card space.
