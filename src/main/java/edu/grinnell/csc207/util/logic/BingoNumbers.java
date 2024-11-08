@@ -9,14 +9,6 @@ import edu.grinnell.csc207.util.matrix.Matrix;
  */
 public final class BingoNumbers {
 
-  // +-----------+---------------------------------------------------
-  // | Constants |
-  // +-----------+
-
-  private static final int MIN = 1;
-
-  private static final int MAX = 48;
-
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
@@ -28,13 +20,16 @@ public final class BingoNumbers {
    */
   private Random gridRng;
 
+  private Integer bound;
+
   // +--------------+-------------------------------------------------
   // | Constructors |
   // +--------------+
 
-  public BingoNumbers() {
+  public BingoNumbers(Integer dimen) {
     this.callRng = new Random();
     this.gridRng = new Random();
+    this.bound = (dimen * dimen) * 3;
   } // BingoNumbers()
 
   // +---------+-----------------------------------------------------
@@ -42,7 +37,7 @@ public final class BingoNumbers {
   // +---------+
 
   public int getRandom() {
-    return this.callRng.nextInt(MAX - MIN + 1) + MIN;
+    return this.callRng.nextInt(this.bound) + 1;
   } // getRandom()
 
   /**

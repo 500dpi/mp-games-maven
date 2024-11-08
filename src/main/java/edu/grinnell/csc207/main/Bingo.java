@@ -9,10 +9,13 @@ import edu.grinnell.csc207.util.logic.BingoNumbers;
 
 /**
  * A sample one-player Bingo game.
- * The player generates numbers and attempts to match them to the Bingo card.
- * If they match 4 in a row, either horizontally, vertically, or diagonally, they win.
  *
- * @author Samuel A. Rebelsky
+ * The player generates numbers and attempts to match them to the
+ * Bingo card. If they match 4 in a row, either horizontally, vertically,
+ * or diagonally, they win.
+ *
+ * @author Sal Karki
+ * @author Sara Jaljaa
  */
 public class Bingo {
 
@@ -29,15 +32,34 @@ public class Bingo {
   public static void main(String[] args) throws IOException {
     PrintWriter pen = new PrintWriter(System.out, true);
     Scanner eyes = new Scanner(System.in);
+    BingoCard card = null;
 
-    // Initialize a new 4x4 bingo card
-    BingoCard card = new BingoCard(4);
-    BingoNumbers random = new BingoNumbers();
+    // Take command line arguments to set card dimensions (2-5, inclusive)
+    if (args.length != 0) {
+      for (int i = 0; i < args.length; i++) {
+        if ((args[i].equals("-s"))
+            && ((i + 1) != args.length)) {
+          Integer dimensions = Integer.valueOf(args[i + 1]);
+          pen.println(dimensions);
+          if (dimensions > 1 && dimensions < 6) {
+            card = new BingoCard(dimensions);
+            break;
+          } // if
+        } // if
+      } // for
+    } // if
+
+    // If no command line arguments, default card is set to 4x4
+    if (card == null) {
+      card = new BingoCard(4);
+    } // if
+
+    BingoNumbers random = new BingoNumbers(card.length());
 
     // Print the initial game instructions and bingo card
     pen.println("Here is your bingo card!");
     BingoPrint.printCard(card);
-    BingoPrint.printInstructions(pen);
+    BingoPrint.printInstructions(pen, card.length());
 
     String userInput;
     Integer rand;

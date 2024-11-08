@@ -5,7 +5,7 @@ import edu.grinnell.csc207.util.matrix.Matrix;
 import edu.grinnell.csc207.util.matrix.MatrixV0;
 
 /**
- * The bingo card and associated rules.
+ * The bingo card and its associated rules.
  *
  * @author Sara Jaljaa
  */
@@ -21,7 +21,7 @@ public class BingoCard {
   private Matrix<Integer> card;
 
   /**
-   * The side lengths of the square bingo card.
+   * The side dimensions of the square bingo card.
    */
   private Integer length;
 
@@ -39,7 +39,7 @@ public class BingoCard {
   public BingoCard(Integer length) {
     this.length = length;
     this.card = new MatrixV0<Integer>(length, length, 0);
-    BingoNumbers gridGen = new BingoNumbers();
+    BingoNumbers gridGen = new BingoNumbers(length);
 
     try {
       for (int i = 0; i < length; i++) {
@@ -88,10 +88,10 @@ public class BingoCard {
    */
   public Integer get(Integer row, Integer col) {
     return this.card.get(row, col);
-  } // get(int, int)
+  } // get(Integer, Integer)
 
   /**
-   * The card dimensions.
+   * Get the card dimensions.
    *
    * @return
    *    An integer representing the sides of the bingo square.

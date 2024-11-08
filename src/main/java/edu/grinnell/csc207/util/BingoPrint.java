@@ -7,7 +7,7 @@ import edu.grinnell.csc207.util.logic.BingoCard;
  * Bingo card printing helpers.
  *
  * @author Sara Jaljaa
- * @author --
+ * @author Sal Karki
  */
 public class BingoPrint {
 
@@ -28,19 +28,19 @@ public class BingoPrint {
    * Print the instructions for the game.
    *
    * @param pen
-   *  The printwriter used to print the instructions.
+   *    The printwriter used to print the instructions.
+   * @param dimen
+   *    The dimensions of the bino card.
    */
-  public static void printInstructions(PrintWriter pen) {
-    pen.println("""
-        Welcome to Bingo!
-
-        The game board is a 4x4 bingo card filled with random numbers.
-
-        The goal is to mark down the random numbers given with the numbers on your bingo card.
-
-        If you match 4 in a row, you win!
-
-        """);
+  public static void printInstructions(PrintWriter pen, Integer dimen) {
+    StringBuilder greet = new StringBuilder("Welcome to Bingo!\n");
+    greet.append("The game board is a " + new String(dimen + "x" + dimen + " "));
+    greet.append("""
+        bingo card filled with random numbers.\n
+        The goal is to mark down the random numbers given with the numbers on your bingo card.\n
+        If you match any""");
+    greet.append(" " + dimen + " in a row, you win!\n");
+    pen.println(greet);
   } // printInstructions(PrintWriter)
 
   /**
