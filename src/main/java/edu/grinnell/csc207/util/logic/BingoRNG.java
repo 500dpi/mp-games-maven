@@ -6,6 +6,9 @@ import edu.grinnell.csc207.util.matrix.Matrix;
 
 /**
  * Random number generation for bingo.
+ *
+ * @author Sal Karki
+ * @author Sara Jaljaa
  */
 public final class BingoRNG {
 
