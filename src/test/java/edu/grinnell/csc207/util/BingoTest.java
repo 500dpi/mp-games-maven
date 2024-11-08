@@ -3,10 +3,7 @@ package edu.grinnell.csc207.util;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
-
 import edu.grinnell.csc207.util.logic.BingoCard;
-import edu.grinnell.csc207.util.logic.BingoPrint;
-
 import edu.grinnell.csc207.util.matrix.ArraySizeException;
 import edu.grinnell.csc207.util.matrix.Matrix;
 import edu.grinnell.csc207.util.matrix.MatrixV0;
@@ -48,7 +45,7 @@ public class BingoTest {
     BingoCard bingo = new BingoCard(card);
 
     // Empty card
-    assertEquals(
+    assertEquals("\n" +
         "+----+----+----+----+\n" +
         "| XX | XX | XX | XX |\n" +
         "+----+----+----+----+\n" +
@@ -65,7 +62,7 @@ public class BingoTest {
     BingoCard bingo2 = new BingoCard(card2);
 
     // Only single digit card (spacing test)
-    assertEquals(
+    assertEquals("\n" +
         "+----+----+----+----+\n" +
         "| 05 | 05 | 05 | 05 |\n" +
         "+----+----+----+----+\n" +
@@ -82,7 +79,7 @@ public class BingoTest {
     BingoCard bingo3 = new BingoCard(card3);
 
     // Only double digit card
-    assertEquals(
+    assertEquals("\n" +
         "+----+----+----+----+\n" +
         "| 73 | 73 | 73 | 73 |\n" +
         "+----+----+----+----+\n" +
@@ -122,7 +119,7 @@ public class BingoTest {
 
     BingoCard bingo = new BingoCard(card);
 
-    assertEquals(
+    assertEquals("\n" +
         "+----+----+----+----+\n" +
         "| 03 | 54 | 33 | 87 |\n" +
         "+----+----+----+----+\n" +
@@ -135,15 +132,6 @@ public class BingoTest {
         BingoPrint.cardToString(bingo),
         "Successful 'random' card.");
   } // normalCardTest()
-
-  /**
-   * Tests for bingo card images that have single
-   * digits, double digits, and marked bingo values.
-   */
-  @Test
-  public void bingoCard() {
-    // FIX
-  } // bingoCard()
 
   // +-------------+-------------------------------------------------
   // | Match Tests |
