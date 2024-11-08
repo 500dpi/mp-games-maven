@@ -43,7 +43,7 @@
           <artifactId>exec-maven-plugin</artifactId>
           <version>3.3.0</version>
           <configuration>
-            <mainClass>edu.grinnell.csc207.sample.Game1P</mainClass>
+            <mainClass>edu.grinnell.csc207.main.Bingo</mainClass>
           </configuration>
         </plugin>
 
@@ -63,7 +63,7 @@
             <archive>
               <manifest>
                 <addClasspath>true</addClasspath>
-                <mainClass>edu.grinnell.csc207.sample.Game1P</mainClass>
+                <mainClass>edu.grinnell.csc207.main.Bingo</mainClass>
               </manifest>
             </archive>
           </configuration>
