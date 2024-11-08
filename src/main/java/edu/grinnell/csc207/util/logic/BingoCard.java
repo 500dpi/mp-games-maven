@@ -11,15 +11,6 @@ import edu.grinnell.csc207.util.matrix.MatrixV0;
  */
 public class BingoCard {
 
-  // +-----------+---------------------------------------------------
-  // | Constants |
-  // +-----------+
-
-  /**
-   * The default size of the bingo card (4x4).
-   */
-  private static final Integer DEF = 4;
-
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
