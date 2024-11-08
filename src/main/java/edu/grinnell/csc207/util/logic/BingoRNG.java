@@ -7,26 +7,38 @@ import edu.grinnell.csc207.util.matrix.Matrix;
 /**
  * Random number generation for bingo.
  */
-public final class BingoNumbers {
+public final class BingoRNG {
 
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
 
+  /**
+   * Random bingo values called.
+   */
   private Random callRng;
 
   /**
-   * To hold randomized grid values in the bingo card.
+   * Randomized grid values for the bingo card.
    */
   private Random gridRng;
 
+  /**
+   * The maximum bound for bingo calls (inclusive).
+   */
   private Integer bound;
 
   // +--------------+-------------------------------------------------
   // | Constructors |
   // +--------------+
 
-  public BingoNumbers(Integer dimen) {
+  /**
+   * Random numbers for a bingo card & game.
+   *
+   * @param dimen
+   *    The dimensions of the bingo card.
+   */
+  public BingoRNG(Integer dimen) {
     this.callRng = new Random();
     this.gridRng = new Random();
     this.bound = (dimen * dimen) * 3;
@@ -36,6 +48,12 @@ public final class BingoNumbers {
   // | Methods |
   // +---------+
 
+  /**
+   * Get a random value for a bingo call.
+   *
+   * @return
+   *    An integer random value.
+   */
   public int getRandom() {
     return this.callRng.nextInt(this.bound) + 1;
   } // getRandom()

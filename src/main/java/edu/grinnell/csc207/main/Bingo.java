@@ -3,9 +3,10 @@ package edu.grinnell.csc207.main;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
+
 import edu.grinnell.csc207.util.BingoPrint;
 import edu.grinnell.csc207.util.logic.BingoCard;
-import edu.grinnell.csc207.util.logic.BingoNumbers;
+import edu.grinnell.csc207.util.logic.BingoRNG;
 
 /**
  * A sample one-player Bingo game.
@@ -54,7 +55,7 @@ public class Bingo {
       card = new BingoCard(4);
     } // if
 
-    BingoNumbers random = new BingoNumbers(card.length());
+    BingoRNG random = new BingoRNG(card.length());
 
     // Print the initial game instructions and bingo card
     pen.println("Here is your bingo card!");

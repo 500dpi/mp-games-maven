@@ -39,7 +39,7 @@ public class BingoCard {
   public BingoCard(Integer length) {
     this.length = length;
     this.card = new MatrixV0<Integer>(length, length, 0);
-    BingoNumbers gridGen = new BingoNumbers(length);
+    BingoRNG gridGen = new BingoRNG(length);
 
     try {
       for (int i = 0; i < length; i++) {
